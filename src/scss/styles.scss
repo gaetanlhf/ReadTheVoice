@@ -1,0 +1,219 @@
+// Toggle global options
+$enable-gradients: true;
+$enable-shadows: true;
+
+$offcanvas-box-shadow: 0 1rem 3rem rgba(0, 0, 0, .175);
+
+// Include functions first
+@import "bootstrap/scss/functions";
+
+// Customize some defaults
+$body-color: #333;
+$body-bg: #fff;
+$border-radius: .4rem;
+$primary: #4881c6;
+$btn-link-color: #fff;
+
+// Required
+@import "bootstrap/scss/variables";
+@import "bootstrap/scss/variables-dark";
+@import "bootstrap/scss/maps";
+@import "bootstrap/scss/mixins";
+@import "bootstrap/scss/utilities";
+@import "bootstrap/scss/root";
+@import "bootstrap/scss/reboot";
+
+@import "bootstrap/scss/type";
+// @import "bootstrap/scss/images";
+@import "bootstrap/scss/containers";
+@import "bootstrap/scss/grid";
+// @import "bootstrap/scss/tables";
+@import "bootstrap/scss/forms";
+@import "bootstrap/scss/buttons";
+@import "bootstrap/scss/transitions";
+@import "bootstrap/scss/dropdown";
+// @import "bootstrap/scss/button-group";
+@import "bootstrap/scss/nav";
+// @import "bootstrap/scss/navbar"; // Requires nav
+@import "bootstrap/scss/card";
+// @import "bootstrap/scss/breadcrumb";
+@import "bootstrap/scss/accordion";
+// @import "bootstrap/scss/pagination";
+// @import "bootstrap/scss/badge";
+@import "bootstrap/scss/alert";
+// @import "bootstrap/scss/progress";
+// @import "bootstrap/scss/list-group";
+@import "bootstrap/scss/close";
+// @import "bootstrap/scss/toasts";
+@import "bootstrap/scss/modal"; // Requires transitions
+// @import "bootstrap/scss/tooltip";
+// @import "bootstrap/scss/popover";
+// @import "bootstrap/scss/carousel";
+@import "bootstrap/scss/spinners";
+// @import "bootstrap/scss/offcanvas"; // Requires transitions
+// @import "bootstrap/scss/placeholders";
+
+// Helpers
+@import "bootstrap/scss/helpers";
+
+// Utilities
+@import "bootstrap/scss/utilities/api";
+
+
+@font-face {
+    font-family: "Varela Round";
+    font-style: normal;
+    font-weight: 400;
+    src: url("/src/fonts/varela-round-v19-latin-regular.eot");
+    src: local(""), url("/src/fonts/varela-round-v19-latin-regular.eot?#iefix") format("embedded-opentype"),
+        url("/src/fonts/varela-round-v19-latin-regular.woff2") format("woff2"),
+        url("/src/fonts/varela-round-v19-latin-regular.woff") format("woff"),
+        url("/src/fonts/varela-round-v19-latin-regular.ttf") format("truetype"),
+        url("/src/fonts/varela-round-v19-latin-regular.svg#VarelaRound") format("svg");
+}
+
+body {
+    font-family: "Varela Round", sans-serif;
+    background-image: linear-gradient(180deg, #4881c68B, var(--bs-body-bg) 100px, var(--bs-body-bg));
+}
+
+#use-js {
+    visibility: hidden;
+}
+
+.heart {
+    color: red;
+}
+
+.logo {
+    width: 32px;
+    height: 32px;
+}
+
+.bi {
+    vertical-align: -.125em;
+    fill: currentColor;
+}
+
+.rounded-6 {
+    border-radius: 1rem;
+}
+
+.modal-dialog {
+    transition: bottom .75s ease-in-out;
+}
+
+.modal-footer {
+    padding-bottom: 2rem;
+}
+
+.border-right {
+    border-right: 1px solid #eee;
+}
+
+.bi-fw {
+    display: inherit;
+    width: 1.28571429em;
+    text-align: center;
+}
+
+.text-emphasis {
+    color: $primary !important;
+}
+
+.card {
+    border-radius: 40px;
+}
+
+#card-one {
+    background-color: #6478c4;
+    color: #fff;
+}
+
+#card-two {
+    background-color: #7870c1;
+    color: #fff;
+}
+
+#card-three {
+    background-color: #8c67ba;
+    color: #fff;
+}
+
+#card-four {
+    background-color: #9e5cb0;
+    color: #fff;
+}
+
+#card-five {
+    background-color: #ae50a2;
+    color: #fff;
+}
+
+#card-six {
+    background-color: #bc4492;
+    color: #fff;
+}
+
+.card {
+    border: none;
+    border-radius: 10px
+}
+
+.icon {
+    width: 50px;
+    height: 50px;
+    background-color: #eee;
+    color: $primary;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 39px;
+}
+
+.text-shadow-1 {
+    text-shadow: 0 .125rem .25rem rgba(0, 0, 0, .25);
+}
+
+.text-shadow-2 {
+    text-shadow: 0 .25rem .5rem rgba(0, 0, 0, .25);
+}
+
+.text-shadow-3 {
+    text-shadow: 0 .5rem 1.5rem rgba(0, 0, 0, .25);
+}
+
+.card-cover {
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+}
+
+.btn-primary {
+    color: #fff !important;
+}
+
+.colored-footer {
+    background-image: linear-gradient(180deg, var(--bs-body-bg), #4881c68B 80px, var(--bs-body-bg));
+}
+
+.video-container {
+    min-height: auto;
+    text-align: center;
+    border: var(--bs-border-width) var(--bs-border-style) var(--bs-border-color) !important;
+    box-shadow: 0 1rem 3rem rgba(0, 0, 0, .175) !important;
+    border-radius: .3rem !important;
+    position: relative;
+    display: flex;
+    min-height: 100px;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 10px;
+}
+
+video {
+    max-width: 100%;
+    max-height: 100%;
+    overflow: hidden;
+}

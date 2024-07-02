@@ -1,0 +1,30 @@
+{
+    "name": "ReadTheVoice",
+    "description": "ReadTheVoice",
+    "version": "1.0.0",
+    "private": true,
+    "scripts": {
+        "start": "webpack serve",
+        "build": "webpack build --mode=production",
+        "test": "npm run build"
+    },
+    "dependencies": {
+        "bootstrap": "^5.3.3",
+        "masonry-layout": "^4.2.2"
+    },
+    "devDependencies": {
+        "autoprefixer": "^10.4.19",
+        "copy-webpack-plugin": "^12.0.2",
+        "css-loader": "^7.1.2",
+        "file-loader": "^6.2.0",
+        "html-loader": "^5.0.0",
+        "html-webpack-plugin": "^5.6.0",
+        "postcss-loader": "^8.1.1",
+        "sass": "^1.77.6",
+        "sass-loader": "^14.2.1",
+        "style-loader": "^4.0.0",
+        "webpack": "^5.92.1",
+        "webpack-cli": "^5.1.4",
+        "webpack-dev-server": "^5.0.4"
+    }
+}
