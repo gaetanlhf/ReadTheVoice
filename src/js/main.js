@@ -1,13 +1,16 @@
 import "../scss/styles.scss";
 import "masonry-layout";
 
+import {Accordion, Modal} from "bootstrap";
+
 let recognition;
 let isRecording = false;
-let defaultText = "Press \"Start Transcription\" to start real-time transcription.\nA floating window will open automatically."
+let defaultText = "Press \"Start Transcription\" to start real-time transcription."
 let displayText = defaultText;
 let interimText = "";
 let scrollOffset = 0;
 let lastInterimResult = "";
+let micAccessModal;
 
 document.addEventListener("DOMContentLoaded", function () {
     document.querySelector("#use-js").style.visibility = "visible";
@@ -106,13 +109,33 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
+    const modalHtml = `
+        <div class="modal fade" id="micAccessModal" tabindex="-1" aria-labelledby="micAccessModalLabel" aria-hidden="true">
+
+    <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content rounded-4 shadow">
+      <div class="modal-header border-bottom-0">
+        <h1 class="modal-title fs-5" id="micAccessModalLabel">Microphone Access Required</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body py-0">
+        <p>ReadTheVoice requires access to your microphone for transcription. Please grant microphone access and try again.</p>
+      </div>
+      <div class="modal-footer flex-column align-items-stretch w-100 gap-2 pb-3 border-top-0">
+        <button type="button" class="btn btn-lg btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>`
+    document.body.insertAdjacentHTML('beforeend', modalHtml);
+    micAccessModal = new Modal(document.getElementById('micAccessModal'));
 });
 
 const videoElement = document.getElementById("video");
 const canvas = document.createElement("canvas");
 const context = canvas.getContext("2d");
 canvas.width = 400;
-canvas.height = 150;
+canvas.height = 120;
 const stream = canvas.captureStream(30);
 videoElement.srcObject = stream;
 
@@ -169,7 +192,6 @@ function wrapText(context, text, maxWidth) {
     return lines;
 }
 
-
 updateCanvas();
 
 async function toggleSpeechRecognition() {
@@ -189,16 +211,18 @@ async function toggleSpeechRecognition() {
             }
         }
     } else {
-        startSpeechRecognition();
-        transcriptButton.textContent = "Stop Transcription";
-        isRecording = true;
-
         try {
+            await navigator.mediaDevices.getUserMedia({audio: true});
+            startSpeechRecognition();
+            transcriptButton.textContent = "Stop Transcription";
+            isRecording = true;
+
             if (document.pictureInPictureEnabled && !document.pictureInPictureElement) {
                 await videoElement.requestPictureInPicture();
             }
         } catch (err) {
-            console.error("Error opening PiP mode:", err);
+            console.error("Error accessing microphone:", err);
+            handleMicrophoneAccessError();
         }
     }
 }
@@ -263,9 +287,20 @@ function startSpeechRecognition() {
         })
         .catch(function (err) {
             console.error("Error accessing microphone:", err);
-            isRecording = false;
-            document.getElementById("startTranscript").textContent = "Start Transcription";
+            handleMicrophoneAccessError();
         });
+}
+
+function handleMicrophoneAccessError() {
+    isRecording = false;
+    const transcriptButton = document.getElementById("startTranscript");
+    transcriptButton.textContent = "Start Transcription";
+
+    if (document.pictureInPictureElement) {
+        document.exitPictureInPicture().catch(console.error);
+    }
+
+    micAccessModal.show();
 }
 
 function stopSpeechRecognition() {
