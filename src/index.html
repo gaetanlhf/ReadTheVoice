@@ -178,7 +178,12 @@
                                         <option value="th-TH">ภาษาไทย</option>
                                     </select>
                                 </div>
-                                <div class="mb-3">
+                                <div class="mb-3 d-flex gap-3">
+                                    <button class="btn btn-sm btn-secondary" type="button" id="settingsButton" data-bs-toggle="modal" data-bs-target="#settingsModal">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" style="display: inline-block; width: 1em; height: 1em; vertical-align:-.125em;" fill="currentColor" viewBox="0 0 16 16">
+                                            <path fill-rule="evenodd" d="M11.5 2a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3M9.05 3a2.5 2.5 0 0 1 4.9 0H16v1h-2.05a2.5 2.5 0 0 1-4.9 0H0V3zM4.5 7a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3M2.05 8a2.5 2.5 0 0 1 4.9 0H16v1H6.95a2.5 2.5 0 0 1-4.9 0H0V8zm9.45 4a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3m-2.45 1a2.5 2.5 0 0 1 4.9 0H16v1h-2.05a2.5 2.5 0 0 1-4.9 0H0v-1z" />
+                                        </svg>
+                                    </button>
                                     <button class="btn btn-primary btn-lg w-100 mx-0" id="startTranscript">Start
                                         transcription
                                     </button>
@@ -419,6 +424,62 @@
                     </span>
                 </div>
             </footer>
+        </div>
+    </div>
+    <div class="modal fade" id="settingsModal" tabindex="-1" aria-labelledby="settingsModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content rounded-3 shadow">
+                <div class="modal-body p-4">
+                    <h5 class="text-center mb-4">Display Settings</h5>
+
+                    <div class="settings-group mb-4">
+                        <label for="canvasWidth" class="form-label d-flex justify-content-between align-items-center">
+                            <span>Width</span>
+                            <span class="text-muted small" id="widthValue">400px</span>
+                        </label>
+                        <input type="range" class="form-range" id="canvasWidth" value="400" min="200" max="800" step="10">
+                    </div>
+
+                    <div class="settings-group mb-4">
+                        <label for="canvasHeight" class="form-label d-flex justify-content-between align-items-center">
+                            <span>Height</span>
+                            <span class="text-muted small" id="heightValue">120px</span>
+                        </label>
+                        <input type="range" class="form-range" id="canvasHeight" value="120" min="80" max="400" step="10">
+                    </div>
+
+                    <div class="settings-group mb-4">
+                        <label for="maxLines" class="form-label d-flex justify-content-between align-items-center">
+                            <span>Maximum Lines</span>
+                            <span class="text-muted small" id="linesValue">3</span>
+                        </label>
+                        <input type="range" class="form-range" id="maxLines" value="3" min="1" max="10" step="1">
+                    </div>
+
+                    <div class="settings-group mb-4">
+                        <label for="fontSize" class="form-label d-flex justify-content-between align-items-center">
+                            <span>Font Size</span>
+                            <span class="text-muted small" id="fontValue">25px</span>
+                        </label>
+                        <input type="range" class="form-range" id="fontSize" value="25" min="12" max="48" step="1">
+                    </div>
+
+                    <div class="settings-group">
+                        <div class="d-grid gap-2">
+                            <button class="btn btn-sm btn-danger top-2 end-2" id="resetSettingsButton" type="button">Back to default</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal-footer flex-nowrap p-0">
+                    <button type="button" class="btn btn-lg fs-6 text-decoration-none col-6 py-3 m-0 rounded-0 border-end" id="applySettings">
+                        <strong>Apply changes</strong>
+                    </button>
+                    <button type="button" class="btn btn-lg fs-6 text-decoration-none col-6 py-3 m-0 rounded-0" data-bs-dismiss="modal">
+                        Cancel
+                    </button>
+                </div>
+            </div>
         </div>
     </div>
     <script data-cfasync="false" data-color="#4881c6" data-description="Support me on Buy me a coffee!" data-id="gaetanlhf" data-message="If ReadTheVoice is useful to you, tip me to support the maintenance of this project ❤️" data-name="BMC-Widget" data-position="Right" data-x_margin="18" data-y_margin="18" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js"></script>
