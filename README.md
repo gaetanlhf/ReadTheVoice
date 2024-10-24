@@ -4,7 +4,7 @@
 <p align="center">
     <a href="#about">About</a> •
     <a href="#features">Features</a> •
-    <a href="#made-with">Made With</a> •
+    <a href="#deploy">Deploy</a> •
     <a href="#support">Support</a>
 </p>
 
